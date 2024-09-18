@@ -1,1 +1,82 @@
+Como un terapeuta da los parámetros a un robot para hacer rehabilitación de la marcha, que considera? y qué lenguaje usa el terapeuta?
+
+1. Adaptación específica al paciente: Los terapeutas se aseguran de que los robots se adapten a las necesidades individuales de cada paciente. Por ejemplo, los estudios demuestran que robots como el sistema de rehabilitación GENTLE/A pueden ajustar sus movimientos en función del rendimiento del paciente, tanto si éste va delante como detrás durante la terapia. Esta adaptabilidad es crucial para personalizar el tratamiento en función de las fases de recuperación. (https://ieeexplore.ieee.org/abstract/document/6650380)
+2.Parámetros biomecánicos y de impedancia: Los parámetros de impedancia mecánica, como la rigidez y la amortiguación, se determinan en función de la interacción entre el paciente y el terapeuta. Estos parámetros ayudan a los robots a imitar la asistencia física del terapeuta y a ajustar el movimiento a las necesidades del paciente.
+3. Consideraciones de seguridad: Los terapeutas dan prioridad a la seguridad, sobre todo para evitar que se vuelvan a producir lesiones. Por ejemplo, utilizando modelos musculoesqueléticos, los robots pueden programarse para evitar una tensión excesiva en zonas vulnerables.
+4. Aprender de la demostración: Los terapeutas suelen utilizar una técnica denominada «enseñanza cinestésica», en la que guían los movimientos del paciente mientras interactúa con el robot. El robot aprende de estas demostraciones y replica el comportamiento del terapeuta, lo que permite al paciente practicar sin la supervisión continua del terapeuta.
+5. Modelos de lenguaje e interacción: Los terapeutas interactúan con los robots de terapia utilizando interfaces fáciles de usar, a menudo modeladas en lenguajes de programación de alto nivel
+En conclusión, los terapeutas utilizan datos específicos del paciente, parámetros mecánicos, protocolos de seguridad y aprendizaje cinestésico para guiar a los robots en fisioterapia. El lenguaje y la interfaz utilizados para interactuar con los robots están diseñados para ser intuitivos y adaptables a fin de garantizar un tratamiento eficaz.
+parámetros de marcha ( velocidad de marcha , cadencia y longitud de zancada )
+Un sistema robótico enseñado por un terapeuta para ayudar durante la terapia de la marcha dirigida a la caída del pie
+
+
+A Therapist-taught Robotic System for Assistance During Gait Therapy Targeting Foot Drop 
+El artículo trata sobre el desarrollo de un sistema robótico para asistir en la terapia de marcha, específicamente dirigido a pacientes con caída del pie,condición común en persona que sufrieron de accidentes cerebrovasculares. El robot es enseñado por terapeutas utilizando técnicas de aprendizaje por demostración (Learning from Demonstration, LfD). El robot aprende a replicar la asistencia del terapeuta en la tarea de levantar la pierna del paciente durante una terapia en cinta caminadora, lo que permite que el paciente practique sin la presencia física del terapeuta. 
+El sistema es evaluado mediante experimentos con participantes sanos que simulan la caída del pie, y los resultados muestran que el robot puede proporcionar la asistencia necesaria, aunque con algunas limitaciones para lograr patrones de marcha ideales. El artículo se centra en el sistema de control de impedancia del robot y su capacidad para aprender y reproducir una asistencia similar a la humana para la rehabilitación de extremidades inferiores.
+Conceptos clave:
+Robótica de rehabilitación: Uso de robots para fisioterapia repetitiva e intensiva.
+Aprendizaje por demostración (LfD): Una técnica de aprendizaje automático que permite a los robots imitar el comportamiento humano.
+Control de impedancia: Método que garantiza interacciones seguras y flexibles entre humanos y robots durante la terapia.
+El sistema robótico que describe el artículo utiliza Aprendizaje por Demostración (LfD) para que el robot pueda replicar las acciones del terapeuta durante la terapia de marcha. En esencia, el robot observa cómo el terapeuta interactúa con el paciente (por ejemplo, levantando una pierna afectada) y aprende de estas demostraciones para luego replicarlas. Para lograrlo, se emplean técnicas de modelado probabilístico (Modelo de Mezcla Gaussiana, GMM) que permiten al robot generalizar y luego imitar las asistencias proporcionadas por el terapeuta.
+
+
+Aprendizaje por Demostración (LfD)
+Fase de demostración: Durante esta fase, el terapeuta asiste físicamente al paciente y mueve el robot a lo largo de las trayectorias necesarias (como levantar la pierna del paciente). El robot registra los movimientos del terapeuta y los guarda como datos de referencia, relacionando las posiciones del pie del paciente con los movimientos que el terapeuta realiza.
+Fase de imitación: Posteriormente, cuando el terapeuta ya no está presente, el robot utiliza los datos recogidos para imitar la asistencia brindada. El robot aplica los movimientos y la fuerza necesaria para levantar la pierna del paciente de forma similar a como lo hizo el terapeuta.
+
+Fase de demostración:
+Terapista y paciente: El terapeuta interactúa con el robot durante la terapia, ajustando la posición del pie afectado del paciente a lo largo de la fase de balanceo de la marcha.
+Control de Impedancia por Estimación de Retardo Temporal (TDE): El robot utiliza un esquema de control de impedancia, lo que permite al terapeuta mover el robot con seguridad. El control de impedancia regula cómo el robot responde a las fuerzas aplicadas, asegurando que sea seguro y adecuado para la interacción física.
+Seguimiento de movimiento: Una cámara registra las posiciones de los pies del paciente (el afectado y el no afectado). Estos datos se combinan con las posiciones y fuerzas registradas por el robot durante la interacción.
+Modelo de Mezcla Gaussiana (GMM): Los datos del seguimiento de movimiento y las posiciones registradas del robot se utilizan para construir un modelo probabilístico (GMM) que representa las asistencias proporcionadas por el terapeuta. Este modelo generaliza las acciones del terapeuta y se almacena para su uso posterior.
+
+
+
+
+
+Fase de imitación:
+Paciente: Ahora el paciente realiza la terapia sin la asistencia física del terapeuta, pero con el robot proporcionando la ayuda aprendida.
+Control de Impedancia por TDE: El robot ajusta sus movimientos en tiempo real, aplicando la asistencia adecuada al pie afectado del paciente, utilizando la información que aprendió durante la fase de demostración.
+Regresión de Mezcla Gaussiana (GMR): El robot, en base a los datos almacenados en el GMM, calcula las posiciones deseadas del pie del paciente y ajusta la asistencia de manera que el pie siga un patrón adecuado durante la marcha.
+El robot aprende las acciones del terapeuta mediante una combinación de control de impedancia para la seguridad física y algoritmos de aprendizaje probabilístico (GMM y GMR) para imitar las asistencias durante la marcha, permitiendo al paciente practicar la terapia sin la intervención constante del terapeuta.
+Terapista - Robot: En la fase de demostración, el terapeuta mueve el robot y el sistema aprende las interacciones.
+Robot - Paciente: En la fase de imitación, el robot asiste al paciente según lo aprendido.
+Cámara de movimiento: Registra la posición de los pies del paciente, proporcionando datos de entrada para entrenar el modelo del robot.
+
+
+
+
+
+
+2. Un robot de rehabilitación inteligente con entrenamiento de conmutación directa pasiva y activa: mejora de la inteligencia y la seguridad de los sistemas de interacción humano-robot
+An Intelligent Rehabilitation Robot With Passive and Active Direct Switching Training
+
+El artículo trata sobre el desarrollo de un robot de rehabilitación diseñado para entrenamiento de la marcha en personas con problemas para caminar. El robot propuesto introduce una novedad importante: la capacidad de cambiar suavemente entre modos de entrenamiento pasivo y activo durante el proceso de rehabilitación. Este diseño tiene como objetivo mejorar tanto la seguridad como la inteligencia en la interacción humano-robot.
+En el modo pasivo, el robot guía el movimiento del paciente con restricciones de velocidad para garantizar su seguridad. En el modo activo, el robot permite que el paciente controle el movimiento, ajustándose a su progreso en la rehabilitación. Además, el sistema puede identificar y adaptarse a la velocidad del paciente para mantener la coordinación con el robot. El uso de un algoritmo de control avanzado permite que el robot siga con precisión las trayectorias prescritas por los fisioterapeutas.
+Los resultados de simulaciones y experimentos muestran que el cambio directo entre estos modos mejora significativamente la eficacia y seguridad del entrenamiento, al evitar cambios bruscos de velocidad y garantizar la sincronización entre los movimientos del paciente y el robot. El artículo también destaca la escasez de fisioterapeutas y cómo estos robots pueden aliviar esa carga, proporcionando entrenamientos de marcha efectivos de manera autónoma.
+
+
+
+
+
+
+
+
+3. Normalized gait parameters in NDT-Bobath post-stroke gait rehabilitation 
+
+El objetivo de la investigación fue evaluar los resultados del método NDT-Bobath en la reeducación de la marcha de pacientes adultos después de un accidente cerebrovascular isquémico utilizando parámetros normalizados de la marcha. El grupo de investigación consistió en 60 pacientes, todos ellos pacientes de un accidente cerebrovascular isquémico, que participaron en un programa de rehabilitación: 10 sesiones de terapia NDT-Bobath durante 2 semanas (diez días de terapia). Los parámetros normalizados de la marcha se calcularon en función de las medidas antropométricas de los pacientes y sus parámetros de marcha (velocidad de marcha, cadencia y longitud de zancada) medidos en cada paciente al ingreso (antes de la terapia) y después de la última sesión de terapia para evaluar los efectos de la rehabilitación. Los resultados de la investigación en pacientes fueron los siguientes:
+
+- en la velocidad de marcha normalizada: recuperación en 42 casos (70%), recaída en 10 casos (16,67%), sin cambios mensurables en 8 casos (13,33%),
+- en la cadencia normalizada: recuperación en 39 casos (65%), recaída en 16 casos (26,67%), sin cambios mensurables en 5 casos (8,33%),
+- en la longitud de zancada normalizada: recuperación en 50 casos (83,33%), recaída en 4 casos (6,67%), sin cambios mensurables en 6 casos (10%).
+
+Los cambios estadísticamente significativos y favorables observados en el estado de salud de los pacientes, descritos por los parámetros de la marcha normalizada, confirman
+la eficacia del método NDT-Bobath.
+
+
+
+4. Control strategies used in lower limb exoskeletons for gait rehabilitation after brain injury: a systematic review and analysis of clinical effectiveness
+
+
+5. A review in gait rehabilitation devices and applied control techniques
 
